@@ -1,0 +1,36 @@
+<template>
+    <lightning-card class="slds-m-around_medium">
+        <div class="slds-m-around_small">
+            <template if:true={contactList}>
+                <lightning-datatable 
+                    key-field="Id"
+                    data={contactList}
+                    onrowselection={handleRowSelection} 
+                    columns={columns}>
+                </lightning-datatable>
+            </template>
+            <template if:true={error}>
+                {error}
+            </template>
+            <div class="slds-m-around_small">
+                <lightning-button 
+                    class="slds-m-left_x-small" 
+                    variant="brand" 
+                    label="Add Debt" 
+                    title="Add Debt" 
+                    onclick={handleAddDebt}>
+                </lightning-button>
+            </div>
+            <div class="slds-m-around_small slds-box slds-box_xx-small slds-theme--inverse">
+                <p>Total Balance: <span style="float:right">$<lightning-formatted-number value={totalBalance}></lightning-formatted-number></span></p>
+            </div>
+            <div class="slds-m-around_small">
+               <p><strong>Total Row Count: {noOfRecords}</strong>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <strong>Selected Rows: {countSelectedRows}</strong></p>
+            </div>
+        </div>
+        
+        <template if:true={showModal}>
+            <c-create-debt-form onrecordcreate={handleRecordCreate}></c-create-debt-form>
+        </template>
+    </lightning-card>
+</template>

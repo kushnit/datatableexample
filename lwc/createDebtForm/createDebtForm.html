@@ -1,0 +1,46 @@
+<template>
+    <div class="slds-theme_default">
+        <template if:true={showModal}>    
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" 
+                aria-modal="true" aria-describedby="modal-content-id-1" 
+                class="slds-modal slds-fade-in-open"> 
+                <div class="slds-modal__container"> 
+                    <header class="slds-modal__header">
+                        <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Create New Debt</h1>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <lightning-record-edit-form object-api-name="Contact" onsuccess={handleSuccess} onsubmit={handleSubmit}>
+                            <lightning-messages></lightning-messages>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-input-field field-name='FirstName'></lightning-input-field>
+                                    <lightning-input-field field-name='MinPaymentPercentage__c'></lightning-input-field>
+                                    <lightning-input-field field-name='CreditorName__c'></lightning-input-field>                              
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-input-field field-name='LastName'></lightning-input-field>
+                                    <lightning-input-field field-name='Balance__c'></lightning-input-field>
+                                </div>
+                            </div>                       
+                        </lightning-record-edit-form>
+                    </div>           
+                    <footer class="slds-modal__footer slds-theme_default slds-p-around_medium">
+                        <lightning-button 
+                            type="cancel" 
+                            class="slds-var-m-around_xxx-small" 
+                            label="Cancel" 
+                            onclick={handleCancel}>
+                        </lightning-button>
+                        <lightning-button 
+                            type="submit" 
+                            variant="brand" 
+                            class="slds-var-m-around_xxx-small" 
+                            label="Save" onclick={handleSave}>
+                        </lightning-button>
+                    </footer> 
+                </div>
+            </section>
+            <div class="slds-backdrop slds-fade-in-open"></div> 
+        </template>
+    </div>    
+</template>
