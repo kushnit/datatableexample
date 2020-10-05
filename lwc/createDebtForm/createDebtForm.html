@@ -9,16 +9,16 @@
                         <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Create New Debt</h1>
                     </header>
                     <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-                        <lightning-record-edit-form object-api-name="Contact" onsuccess={handleSuccess} onsubmit={handleSubmit}>
+                        <lightning-record-edit-form object-api-name="Debt__c" onsuccess={handleSuccess} onsubmit={handleSubmit}>
                             <lightning-messages></lightning-messages>
                             <div class="slds-grid">
                                 <div class="slds-col slds-size_1-of-2">
-                                    <lightning-input-field field-name='FirstName'></lightning-input-field>
+                                    <lightning-input-field field-name='FirstName__c'></lightning-input-field>
                                     <lightning-input-field field-name='MinPaymentPercentage__c'></lightning-input-field>
                                     <lightning-input-field field-name='CreditorName__c'></lightning-input-field>                              
                                 </div>
                                 <div class="slds-col slds-size_1-of-2">
-                                    <lightning-input-field field-name='LastName'></lightning-input-field>
+                                    <lightning-input-field field-name='LastName__c'></lightning-input-field>
                                     <lightning-input-field field-name='Balance__c'></lightning-input-field>
                                 </div>
                             </div>                       

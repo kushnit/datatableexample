@@ -1,0 +1,47 @@
+<template>
+    <lightning-card class="slds-m-around_medium">
+        <div class="slds-m-around_small">
+            <template if:true={debtList}>
+                <lightning-datatable 
+                    key-field="Id"
+                    data={debtList}
+                    onrowselection={handleRowSelection} 
+                    columns={columns}>
+                </lightning-datatable>
+            </template>
+            <template if:true={error}>
+                {error}
+            </template>
+            <div class="slds-m-around_small">
+                <lightning-button 
+                    class="slds-m-left_x-small" 
+                    variant="brand" 
+                    label="Add Debt" 
+                    title="Add Debt" 
+                    onclick={handleAddDebt}>
+                </lightning-button>
+                <lightning-button 
+                    class="slds-m-left_x-small" 
+                    variant="brand" 
+                    label="Delete" 
+                    title="Delete" 
+                    onclick={handleDelete}>
+                </lightning-button>
+            </div>
+            <div class="slds-m-around_small slds-box slds-box_xx-small slds-theme--inverse">
+                <p>Total Balance: <span style="float:right">$<lightning-formatted-number value={totalBalance}></lightning-formatted-number></span></p>
+            </div>
+            <div class="slds-m-around_small">
+               <p><strong>Total Row Count: {noOfRecords}</strong>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <strong>Selected Rows: {countSelectedRows}</strong></p>
+            </div>
+        </div>
+
+        <!-- Display child component modal for record creation -->
+        <template if:true={showModal}>
+            <c-create-debt-form 
+                onrecordcreate={handleRecordCreate}
+                oncancelcreate={handleRecordCancel}>
+            </c-create-debt-form>
+        </template>
+    </lightning-card>
+</template>
